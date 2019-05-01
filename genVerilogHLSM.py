@@ -113,8 +113,7 @@ if __name__ == '__main__':
 
 	strDatapath += "\n// Parameter Declarations\n"
 	for param, value in hlsm["parameters"].items():
-		bits = math.ceil(math.log2(value))
-		strDatapath += "parameter {} = {}'d{};\n".format(param, bits, value)
+		strDatapath += "parameter {} = {}'d{};\n".format(param, value[0], value[1])
 
 	strDatapath += "\n// Internal Registers\n"
 	for reg, length in internalRegisters.items():
