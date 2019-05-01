@@ -197,7 +197,8 @@ if __name__ == '__main__':
 		strController += "\t\t{}: begin\n".format(state)
 		for reg, action in options["actions"].items():
 			strController += "\t\t\t{} = 1;\n".format(ctrlSigs[reg][0])
-			strController += "\t\t\t{} = {};\n".format(ctrlSigs[reg][1], finder(stages[reg], action))
+			if len(ctrlSigs[reg]) > 1:
+				strController += "\t\t\t{} = {};\n".format(ctrlSigs[reg][1], finder(stages[reg], action))
 		if len(options["transitions"]) == 1:
 			strController += "\t\t\tnext_state = {};\n".format(options["transitions"]["goto"])
 		else:
