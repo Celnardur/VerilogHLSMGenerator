@@ -75,9 +75,10 @@ if __name__ == '__main__':
 	strProcessor += ");\n\n"
 
 	for reg, value in ctrlSigs.items():
-		bits = math.ceil(math.log2(int(value[2])))
 		strProcessor += "wire {};\n".format(value[0])
-		strProcessor += "wire {} {};\n".format(regNotation(bits), value[1])
+		if len(value) > 1:
+			bits = math.ceil(math.log2(int(value[2])))
+			strProcessor += "wire {} {};\n".format(regNotation(bits), value[1])
 
 	for con, value in dconditions.items():
 		strProcessor += "wire {};\n".format(value)
@@ -185,7 +186,8 @@ if __name__ == '__main__':
 	strController += "always @(*) begin\n"
 	for reg, sigs in ctrlSigs.items():
 		strController += "\t{} = 0;\n".format(sigs[0])
-		strController += "\t{} = 0;\n".format(sigs[1])
+		if len(sigs) > 1:
+			strController += "\t{} = 0;\n".format(sigs[1])
 
 	strController += "\tnext_state = INIT;\n"
 	strController += "\tcase (state)\n"
