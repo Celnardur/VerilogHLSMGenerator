@@ -1,0 +1,44 @@
+{
+	"module": {
+		"name": "maxfinder",
+		"input": {
+			"din":  4
+		},
+		"output": {
+			"addr": 4,
+			"max": 4
+		}
+	},
+	"states": {
+		"INIT": {
+			"actions": {"addr": "0", "max": "0"},
+			"transitions": {"goto": "READ_MEM"}
+		},
+		"READ_MEM": {
+			"actions": {},
+			"transitions": {"goto": "CHECK_MAX"}
+		},
+		"CHECK_MAX": {
+			"actions": {},
+			"transitions": {"din > max": "UPDATE_MAX", "else": "CHECK_LAST_ADDRESS"}
+		},
+		"UPDATE_MAX": {
+			"actions": {"max": "din"},
+			"transitions": {"goto": "CHECK_LAST_ADDRESS"}
+		},
+		"CHECK_LAST_ADDRESS": {
+			"actions": {"addr": "addr + 1"},
+			"transitions": {"addr == LASTADDR": "END", "else": "READ_MEM"}
+		},
+		"END": {
+			"actions": {},
+			"transitions": {"goto": "END"}
+		}
+	},
+	"parameters": {
+		"LASTADDR": 15
+	},
+	"internalRegisters": {
+
+	}
+}
