@@ -14,16 +14,25 @@ git clone https://github.com/Celnardur/VerilogHLSMGenerator.git
 
 ## Usage
 
+To use the script, you make a json file that represent your HLSM then run the 
+script like this with your json HLSM as the first argument. 
+There are no additional command line arguments or options. 
+
+```bash
+./genVerilogHLSM.py myHLSM.json
+```
+
+This creates three verilog modules that implement this max finder. 
+The Processor is the top level module and the Controller and Datapath implement
+the HLSM.
+
 I provided an example json file that represents a HLSM which finds the max value in 
 a ram/rom module that can be wired to this generated module. 
+You can run the example like this. 
 
 ```bash
 ./genVerilogHLSM.py maxFinderHLSM.json
 ```
-
-This outputs three verilog modules that implement this max finder. 
-The Processor is the top level module and the Controller and Datapath which implement
-the HLSM.
 
 ## Contrubuting
 
