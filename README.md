@@ -34,7 +34,7 @@ You can run the example like this.
 ./genVerilogHLSM.py maxFinderHLSM.json
 ```
 
-## Contrubuting
+## Contributing
 
 I'm no longer working on this project so if anyone wants to improve or take over 
 this project just contact me and I'll give you permissions to this repository.
